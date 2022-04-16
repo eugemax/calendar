@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+</head>
+<body>
+<div>
+    <form method="post">
+        <input type="text" name="title" placeholder="title"/>
+        <input type="text" name="description" placeholder="description"/>
+        <input type="datetime-local" name="start" />
+        <input type="datetime-local" name="finish" />
+        <input type="text" name="name" placeholder="person">
+        <button type="submit">Add</button>
+    </form>
+</div>
+<form method="post">
+    <input name="filter" />
+    <button formaction="/year" type="submit">Find events by year</button>
+    <button formaction="/month" type="submit">Find events by month</button>
+    <button formaction="/delete" type="submit>">Delete by id</button>
+    <div>Events list:</div>
+    <div>
+        {{#events}}
+            <div>
+                <b>{{id}}</b>
+                <span>{{title}}</span>
+                <span>{{description}}</span>
+                <b>{{start}}</b>
+                <b>{{finish}}</b>
+                <b>{{name}}</b>
+            </div>
+        {{/events}}
+    </div>
+</form>
+<form method="post" action="/date">
+    <input type="date" name="filter"/>
+    <button type="submit">Find by date</button>
+</form>
+</body>
+</html>
